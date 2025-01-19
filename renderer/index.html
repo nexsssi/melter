@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flowy@0.3.0/flowy.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flowy@0.3.0/flowy.min.js"></script>
     <link rel="stylesheet" href="flowchart.css">
+    <link rel="stylesheet" href="../my-app/flowy.min.css">
 </head>
 
 
@@ -183,7 +184,18 @@
             </div>
         </main>
         <!-- the end of the main-->
-
+        <!-- Properties panel -->
+    <div id="properties" class="properties-panel">
+        <div id="propwrap">
+            <div id="properties-header">
+                <span class="properties-title">Block Properties</span>
+                <button id="close" class="close-button">&times;</button>
+            </div>
+            <div id="properties-content">
+                <!-- Property fields will be added dynamically -->
+            </div>
+        </div>
+    </div>
 
         <aside class=" w-60 h-screen fixed right-0 top-0 border-l bg-white ">
             <div class="window-controls flex float-end">
@@ -223,5 +235,6 @@
     <script src="renderer.js"></script>
     <script src="own.js"></script>
     <script src="flowchart.js"></script>
+    <script src="../my-app/flowy.min.js"></script>
 </body>
 </html>
