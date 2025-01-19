@@ -9,10 +9,18 @@ NC='\033[0m'
 # Function to check if we're in a git repository
 check_git_repo() {
     if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-        echo -e "${RED}Error: Not a git repository${NC}"
+        echo -e "${RED}Error: Not in a git repository${NC}"
         exit 1
     fi
 }
+
+# Set up git configuration
+git config --global user.name "nexsssi"
+git config --global user.email "hhhhhhhhhhhhhhhggffgf99832@z9uk.underseagolf.com"
+git config --global credential.helper store
+
+# Ensure GitHub CLI is authenticated
+gh auth status || gh auth login
 
 # Function to check and create .gitignore
 check_gitignore() {
@@ -90,11 +98,18 @@ read confirm_push
 
 if [ -z "$confirm_push" ] || [ "${confirm_push,,}" = "y" ]; then
     echo -e "${GREEN}Pushing changes...${NC}"
-    git push origin $current_branch
+    gh repo set-default $(git config --get remote.origin.url)
+    gh pr create --fill || gh pr create --title "$commit_message" --body ""
     if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✅ Success! Changes have been pushed to $current_branch${NC}"
+        echo -e "${GREEN}✅ Success! Changes have been pushed and a PR has been created${NC}"
     else
-        echo -e "${RED}❌ Push failed. Please check the error message above${NC}"
+        echo -e "${YELLOW}PR creation failed. Attempting direct push...${NC}"
+        git push origin $current_branch
+        if [ $? -eq 0 ]; then
+            echo -e "${GREEN}✅ Success! Changes have been pushed to $current_branch${NC}"
+        else
+            echo -e "${RED}❌ Push failed. Please check the error message above${NC}"
+        fi
     fi
 else
     echo -e "${YELLOW}Push cancelled${NC}"
