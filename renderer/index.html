@@ -33,14 +33,14 @@
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flowy@0.3.0/flowy.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flowy@0.3.0/flowy.min.js"></script>
-
+    <link rel="stylesheet" href="flowchart.css">
 </head>
 
 
 <body class="font-Grotesk text-zinc-950 bg-stone-100">
     <div class="flex">
 
-        <aside class="flex h-screen w-72 fixed left-0 top-0 bg-white  ">
+        <aside  class="flex h-screen w-72 fixed left-0 top-0 bg-white  ">
             <div class="nav-icon w-14 bg-white border-r flex flex-col justify-between pt pb-3">
                 <!-- Top Icons Section -->
                 <div class="flex flex-col space-y-4 items-center">
@@ -93,7 +93,7 @@
         
             <div class="view-icon-content w-72  border-r ">
                 <div class="search px-1.5 border-b py-1 ">
-                    <div class="relative">
+                    <div id="search" class="relative">
                         <input type="text" id="search-input"  placeholder="Search..." class="w-full h-9 pl-9 pr-3 rounded-md bg-gray-100 text-sm text-gray-900 placeholder-gray-500 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-300 transition-all duration-150 ease-in-out" />
                         <svg class="absolute left-3 top-2.5 h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -117,7 +117,7 @@
                 </div>
                 <!-- all search end -->
                  
-                <div class="folwcharts-items h-screen w-full flex flex-col mt-2 space-y-2 bg-white px-2 py-1">
+                <div class="folwcharts-items h-screen w-full flex flex-col mt-2 space-y-2 bg-white px-2 py-1 blockelem create-flowy noselect">
                     <div class="item-to-drop flex items-center p-1.5 ring-2 ring-neutral-200 bg-white rounded-md" draggable="true" data-flowy-type="new-visitor">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 256 256">
                             <path d="M136,108A52,52,0,1,1,84,56,52,52,0,0,1,136,108Z" opacity="0.2"></path>
@@ -185,17 +185,16 @@
                         </div>
                     </div>
                 </header>
-                <div id="work-container" class="rounded-lg p-6">
-                    <div class="space-y-2 justify-center items-center">
-                        <div id="canvas" class="w-full h-full bg-gray-100 rounded-lg"></div>
-                    </div>
+                <div class="work-container  flex-1 overflow-auto  mt-9">
+
+                    <div id="canvas" class="w-full h-full  rounded-lg"></div>
                 </div>
             </div>
         </main>
         <!-- the end of the main-->
 
 
-        <aside class="w-60 h-screen fixed right-0 top-0 border-l bg-white ">
+        <aside class=" w-60 h-screen fixed right-0 top-0 border-l bg-white ">
             <div class="window-controls flex float-end">
                 <button  class="w-12 h-8 flex items-center justify-center hover:bg-stone-100 transition-colors focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-undo"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>                    
@@ -232,6 +231,6 @@
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="renderer.js"></script>
     <script src="own.js"></script>
-    
+    <script src="flowchart.js"></script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+.flow-node {
+    padding: 1rem;
+    background: white;
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: move;
+    min-width: 150px;
+    border: 2px solid #e5e7eb;
+}
+
+.item-to-drop.dragging {
+    opacity: 0.5;
+}
+
+#canvas {
+    min-height: 500px;
+    position: relative;
+}
